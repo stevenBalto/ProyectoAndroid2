@@ -1,180 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="#FFFFFF">
 
     <LinearLayout
-        android:id="@+id/layoutLista"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:background="#F5F5F5">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clientes"
-            android:textSize="28sp"
+            android:text="Formulario de Clientes"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:layout_marginBottom="16dp"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"/>
 
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cédula"/>
         <EditText
-            android:id="@+id/txtBuscar"
+            android:id="@+id/txtCedula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Buscar cliente"
-            android:drawableStart="@android:drawable/ic_menu_search"
-            android:drawablePadding="12dp"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"/>
 
-        <ListView
-            android:id="@+id/listViewClientes"
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nombre"/>
+        <EditText
+            android:id="@+id/txtNombre"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="8dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Teléfono"/>
+        <EditText
+            android:id="@+id/txtTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Foto del cliente" />
+
+        <ImageView
+            android:id="@+id/imgCliente"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#DDDDDD"
+            android:scaleType="centerCrop" />
+
+        <Button
+            android:id="@+id/btnTomarFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tomar foto"
+            android:onClick="tomarFoto"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:padding="14dp"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnCancelar"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancelar" />
     </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:background="#FFFFFF"
-        android:elevation="8dp">
-
-        <TextView
-            android:id="@+id/btnAgregar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Agregar"
-            android:gravity="center"
-            android:padding="12dp"
-            android:drawableTop="@android:drawable/ic_menu_add"
-            android:background="?attr/selectableItemBackground"/>
-        <TextView
-            android:id="@+id/btnEditar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Editar"
-            android:gravity="center"
-            android:padding="12dp"
-            android:drawableTop="@android:drawable/ic_menu_edit"
-            android:background="?attr/selectableItemBackground"/>
-        <TextView
-            android:id="@+id/btnEliminar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Eliminar"
-            android:gravity="center"
-            android:padding="12dp"
-            android:drawableTop="@android:drawable/ic_menu_delete"
-            android:background="?attr/selectableItemBackground"/>
-        <TextView
-            android:id="@+id/btnSalir"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Salir"
-            android:gravity="center"
-            android:padding="12dp"
-            android:drawableTop="@android:drawable/ic_menu_revert"
-            android:background="?attr/selectableItemBackground"/>
-    </LinearLayout>
-
-
-    <ScrollView
-        android:id="@+id/layoutFormulario"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:padding="24dp"
-        android:background="#FFFFFF">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Formulario de Clientes"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="24dp"/>
-
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cédula"/>
-            <EditText
-                android:id="@+id/txtCedula"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:padding="12dp"/>
-
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nombre"/>
-            <EditText
-                android:id="@+id/txtNombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:padding="12dp"/>
-
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Teléfono"/>
-            <EditText
-                android:id="@+id/txtTelefono"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:padding="12dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Foto del cliente" />
-
-            <ImageView
-                android:id="@+id/imgCliente"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="#DDDDDD"
-                android:scaleType="centerCrop" />
-
-            <Button
-                android:id="@+id/btnTomarFoto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tomar foto"
-                android:onClick="tomarFoto"
-                android:layout_marginBottom="24dp" />
-
-            <Button
-                android:id="@+id/btnGuardar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Guardar"
-                android:padding="14dp"
-                android:layout_marginBottom="8dp"/>
-
-            <Button
-                android:id="@+id/btnCancelar"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cancelar" />
-        </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+</ScrollView>
