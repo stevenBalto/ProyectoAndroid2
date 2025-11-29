@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
+    android:padding="20dp"
     android:background="#FFFFFF">
 
     <LinearLayout
@@ -10,73 +10,220 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- TÍTULO -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Formulario de Clientes"
+            android:text="Nuevo Cliente"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp"/>
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal" />
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cédula"/>
+        <!-- CÉDULA -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cédula" />
+
         <EditText
             android:id="@+id/txtCedula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:padding="12dp"/>
+            android:padding="10dp"
+            android:layout_marginBottom="12dp" />
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nombre"/>
+
+        <!-- NOMBRE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre" />
+
         <EditText
             android:id="@+id/txtNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:padding="12dp"/>
+            android:padding="10dp"
+            android:layout_marginBottom="12dp" />
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Teléfono"/>
+
+        <!-- TELÉFONO -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teléfono" />
+
         <EditText
             android:id="@+id/txtTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:padding="12dp"/>
-        <TextView
+            android:padding="10dp"
+            android:layout_marginBottom="20dp" />
+
+
+        <!-- BOTÓN TOMAR FOTO -->
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Foto del cliente" />
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp">
 
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_camera"
+                android:layout_marginRight="10dp" />
+
+            <Button
+                android:id="@+id/btnTomarFoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tomar Foto"
+                android:onClick="tomarFoto" />
+        </LinearLayout>
+
+
+        <!-- PREVIEW DE FOTO -->
         <ImageView
             android:id="@+id/imgCliente"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
             android:background="#DDDDDD"
+            android:layout_marginBottom="20dp"
             android:scaleType="centerCrop" />
 
-        <Button
-            android:id="@+id/btnTomarFoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tomar foto"
-            android:onClick="tomarFoto"
-            android:layout_marginBottom="24dp" />
 
-        <Button
-            android:id="@+id/btnGuardar"
+        <!-- BOTONES DE AUDIO -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar"
-            android:padding="14dp"
-            android:layout_marginBottom="8dp"/>
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="20dp">
 
-        <Button
-            android:id="@+id/btnCancelar"
-            style="?android:attr/borderlessButtonStyle"
+            <Button
+                android:id="@+id/btnGrabarAudio"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="   Grabar"
+                android:drawableLeft="@android:drawable/ic_btn_speak_now"
+                android:onClick="iniciarGrabacion" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="0dp" />
+
+            <Button
+                android:id="@+id/btnDetenerGrab"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Detener"
+                android:onClick="detenerGrabacion" />
+
+        </LinearLayout>
+
+        <!-- REPRODUCIR AUDIO -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancelar" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btnReproducirAudio"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Reproducir"
+                android:drawableLeft="@android:drawable/ic_media_play"
+                android:onClick="iniciarReproduccion" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="0dp" />
+
+            <Button
+                android:id="@+id/btnDetenerRep"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Detener"
+                android:onClick="detenerReproduccion" />
+
+        </LinearLayout>
+
+
+        <!-- MAPA -->
+        <org.osmdroid.views.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginBottom="10dp" />
+
+
+        <!-- COORDENADAS -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp">
+
+            <EditText
+                android:id="@+id/txtLatitud"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Latitud"
+                android:padding="10dp" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="0dp" />
+
+            <EditText
+                android:id="@+id/txtLongitud"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Longitud"
+                android:padding="10dp" />
+
+        </LinearLayout>
+
+
+        <!-- BOTONES GUARDAR / CANCELAR -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Guardar"
+                android:padding="10dp" />
+
+            <View
+                android:layout_width="16dp"
+                android:layout_height="0dp" />
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Cancelar"
+                android:padding="10dp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
